@@ -16,6 +16,7 @@ pipeline {
             when {
                 expression {
                     BRANCH_NAME == 'main'
+                }
             steps {
                 script {
                     echo "building image"
