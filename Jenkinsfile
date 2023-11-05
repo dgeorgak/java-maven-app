@@ -3,22 +3,19 @@ def gv
 pipeline {
     agent any
     stages {
-        stage("init") {
+        stage("test") {
             steps {
                 script {
-                    gv = load "script.groovy"
-                }
-            }
-        }
-        stage("build jar") {
-            steps {
-                script {
-                    echo "building jar"
+                    echo "testing the app"
+                    echo "executing pipeline for branch $BRANCH_NAME"
                     //gv.buildJar()
                 }
             }
         }
         stage("build image") {
+            when {
+                expression {
+                    BRANCH_NAME == 'main'
             steps {
                 script {
                     echo "building image"
